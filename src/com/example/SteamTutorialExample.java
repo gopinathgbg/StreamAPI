@@ -11,6 +11,8 @@ public class SteamTutorialExample {
 	
 List<Integer> list= Arrays.asList(35,50,100,90,78,20,34);
 
+//Filter:==========================>
+//Syntax: Stream filteredStream= originalStrream.filter(element -> /*Predicate*/)
 // 1) sort array using stream
 List<Integer> filteredList=list.stream().sorted().collect(Collectors.toList());
 
@@ -33,11 +35,14 @@ List<Integer> marks=Arrays.asList(35,50,62,90,30,99,73,66,93);
 List<Integer> fiveExtramarksStudent=list.stream().filter(i-> i>35).map(j ->j+5).collect(Collectors.toList());
 System.out.println(" grace 5 marks to each passed student"+fiveExtramarksStudent);
 
-
+//Map  ============================>
 // 5) multiply each element by 2
+//syntax:  Stream mappedStream=originalStream.map(element->/* transformation function*/)
+
 List<Integer>twiceNumberList= list.stream().map(i -> i*2).collect(Collectors.toList());
 System.out.println("List"+list);
 System.out.println(" list muliplied by 2"+twiceNumberList);
+
 
 	}
 
