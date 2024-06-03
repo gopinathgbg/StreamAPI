@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -77,9 +80,26 @@ public class Java8Programing {
 		List<String> contactListbyFlatMap = studentList.stream().flatMap(student -> student.getContacts().stream())
 				.distinct().
 				collect(Collectors.toList());
-		System.out.println("ContactList by flatMap "+contactListbyFlatMap);
+	//	System.out.println("ContactList by flatMap "+contactListbyFlatMap);
 		
+	// 6) find the department whos having maximum student
+	Map.Entry<String, Long>	result =studentList.stream().collect(Collectors.groupingBy(Student::getDept,Collectors.counting()))
+		.entrySet().stream().max(Map.Entry.comparingByValue()).get();
+	//	System.out.println(result);
+	// 7) find the average age of male and female student	
 		
+	Map<String,Double>	averageageofmaleandfemale=studentList.stream().collect(Collectors.groupingBy(Student::getGender,Collectors.averagingInt(Student::getAge)));
+	//	System.out.println(averageageofmaleandfemale+"<==:is the averageageofmaleandfemale");
 		
-	}
+	//	8) find the highest rank in each department 
+		
+//		Map<String,Optional<Student>> higestrankineachdept= studentList.stream().collect(Collectors.groupingBy(Student::getDept),Collectors.minBy(Comparator.comparing(Student::getRank)));
+	//	9) find the student who has second rank 
+		 	 Student student=studentList.stream()
+		.sorted(Comparator.comparing(Student::getRank))
+		.skip(1)
+		.findFirst().get();
+		
+		 	 System.out.println(student);
+ 	}
 }
