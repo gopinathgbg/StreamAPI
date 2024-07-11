@@ -32,9 +32,9 @@ public class SteamFilterwithPredicate {
 			    new Person("Girish", "Dhule",27)
 			    
 			);
-		List<Person>younerpersonNotfromPune=people.stream().filter(person -> person.getAge()>=18 && "Pune".equals(person.getAddress())).collect(Collectors.toList());
+		List<Person>younerpersonfromPune=people.stream().filter(person -> person.getAge()>=18 && "Pune".equals(person.getAddress())).collect(Collectors.toList());
 		System.out.println();
-		System.out.println(younerpersonNotfromPune);
+		System.out.println(younerpersonfromPune);
 		
 		// Poblem statement 3 : Persons from Mumbai
 

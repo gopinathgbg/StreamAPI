@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -115,6 +117,12 @@ public class JavaStreamExercise {
 	List<String> strings= Arrays.asList("Gopinath","GirishPatil","Ankush","Akshay","Vishal");
    Optional<String> longestName=	strings.stream().reduce((s1,s2) -> s1.length() >s2.length() ? s1:s2);
 	longestName.ifPresent(System.out::println);
-	} 
-
+	
+	// Problem : find the integer start with 1 
+	
+	List<Integer> intlist=Arrays.asList(11,14,19,23,76,452,1,5);
+	List <String> ddd=intlist.stream().map(e->e +"").filter(e->e.startsWith("1")).collect(Collectors.toList());
+	System.out.println(ddd);
+	
+	}
 }
