@@ -98,8 +98,7 @@ public class Java8Programing {
 		 	 Student student=studentList.stream()
 		.sorted(Comparator.comparing(Student::getRank))
 		.skip(1)
-		.findFirst().get();
-		
+		.findFirst().get();		
 		 	 System.out.println(student);
  	}
 }
